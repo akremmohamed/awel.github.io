@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommended Programming Resources</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px 0;
+            border-bottom: 1px solid #e1e4e8;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #7f8c8d;
+        }
+
+        .resources-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .resource-category {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            transition: transform 0.3s ease;
+        }
+
+        .resource-category:hover {
+            transform: translateY(-5px);
+        }
+
+        .category-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #3498db;
+            display: flex;
+            align-items: center;
+        }
+
+        .category-title i {
+            margin-right: 10px;
+            font-size: 1.8rem;
+        }
+
+        .resource-item {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed #e1e4e8;
+        }
+
+        .resource-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .resource-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #2c3e50;
+        }
+
+        .resource-author {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .resource-description {
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+        }
+
+        .resource-link {
+            display: inline-block;
+            color: #3498db;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .resource-link:hover {
+            color: #2980b9;
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .resources-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Recommended Resources</h1>
+            <p class="subtitle">Books, documents and materials that helped me grow as a developer</p>
+        </header>
+
+        <div class="resources-container">
+            <div class="resource-category">
+                <h2 class="category-title"><i class="fas fa-laptop-code"></i> Programming Fundamentals</h2>
+                <div class="resource-item">
+                    <h3 class="resource-title">Clean Code: A Handbook of Agile Software Craftsmanship</h3>
+                    <p class="resource-author">by Robert C. Martin</p>
+                    <p class="resource-description">Essential reading for writing maintainable, efficient code. Covers principles that apply to all programming languages.</p>
+                    <a href="#" class="resource-link">View on Amazon</a>
+                </div>
+                <div class="resource-item">
+                    <h3 class="resource-title">The Pragmatic Programmer</h3>
+                    <p class="resource-author">by Andrew Hunt and David Thomas</p>
+                    <p class="resource-description">Timeless advice for becoming a more effective programmer, with practical tips and best practices.</p>
+                    <a href="#" class="resource-link">View on Amazon</a>
+                </div>
+                <div class="resource-item">
+                    <h3 class="resource-title">Design Patterns: Elements of Reusable Object-Oriented Software</h3>
+                    <p class="resource-author">by Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides</p>
+                    <p class="resource-description">The classic "Gang of Four" book that introduced design patterns to software development.</p>
+                    <a href="#" class="resource-link">View on Amazon</a>
+                </div>
+            </div>
+
+            <div class="resource-category">
+                <h2 class="category-title"><i class="fab fa-js"></i> Web Development</h2>
+                <div class="resource-item">
+                    <h3 class="resource-title">Eloquent JavaScript</h3>
+                    <p class="resource-author">by Marijn Haverbeke</p>
+                    <p class="resource-description">Excellent introduction to JavaScript and programming concepts. Available free online.</p>
+                    <a href="https://eloquentjavascript.net/" class="resource-link" target="_blank">Read free online</a>
+                </div>
+                <div class="resource-item">
+                    <h3 class="resource-title">You Don't Know JS (book series)</h3>
+                    <p class="resource-author">by Kyle Simpson</p>
+                    <p class="resource-description">Deep dive into JavaScript's core mechanisms. Available free on GitHub.</p>
+                    <a href="https://github.com/getify/You-Dont-Know-JS" class="resource-link" target="_blank">View on GitHub</a>
+                </div>
+                <div class="resource-item">
+                    <h3 class="resource-title">CSS Secrets</h3>
+                    <p class="resource-author">by Lea Verou</p>
+                    <p class="resource-description">Creative solutions to common CSS problems with modern techniques.</p>
+                    <a href="#" class="resource-link">View on Amazon</a>
+                </div>
+            </div>
+
+            <div class="resource-category">
+                <h2 class="category-title"><i class="fas fa-brain"></i> Computer Science</h2>
+                <div class="resource-item">
+                    <h3 class="resource-title">Introduction to Algorithms</h3>
+                    <p class="resource-author">by Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein</p>
+                    <p class="resource-description">Comprehensive coverage of algorithms with mathematical rigor. Known as "CLRS".</p>
+                    <a href="#" class="resource-link">View on Amazon</a>
+                </div>
+                <div class="resource-item">
+                    <h3 class="resource-title">Structure and Interpretation of Computer Programs (SICP)</h3>
+                    <p class="resource-author">by Harold Abelson, Gerald Jay Sussman</p>
+                    <p class="resource-description">Classic MIT textbook that teaches fundamental principles of computing.</p>
+                    <a href="https://mitpress.mit.edu/sites/default/files/sicp/index.html" class="resource-link" target="_blank">Read free online</a>
+                </div>
+                <div class="resource-item">
+                    <h3 class="resource-title">The Art of Computer Programming</h3>
+                    <p class="resource-author">by Donald Knuth</p>
+                    <p class="resource-description">The definitive reference on algorithms and programming techniques.</p>
+                    <a href="#" class="resource-link">View on Amazon</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="resources-container" style="margin-top: 30px;">
+            <div class="resource-category">
+                <h2 class="category-title"><i class="fas fa-graduation-cap"></i> Free Learning Resources</h2>
+                <div class="resource-item">
+                    <h3 class="resource-title">MDN Web Docs</h3>
+                    <p class="resource-author">by Mozilla</p>
+                    <p class="resource-description">The most comprehensive and accurate resource for web technologies.</p>
+                    <a href="https://developer.mozilla.org" class="resource-link" target="_blank">Visit MDN</a>
+                </div>
+                <div class="resource-item">
+                    <h3 class="resource-title">freeCodeCamp</h3>
+                    <p class="resource-author">Open Source Community</p>
+                    <p class="resource-description">Free interactive coding courses with certifications.</p>
+                    <a href="https://www.freecodecamp.org/" class="resource-link" target="_blank">Visit freeCodeCamp</a>
+                </div>
+                <div class="resource-item">
+                    <h3 class="resource-title">Harvard's CS50</h3>
+                    <p class="resource-author">by David J. Malan</p>
+                    <p class="resource-description">Harvard's introduction to computer science, available free online.</p>
+                    <a href="https://cs50.harvard.edu/" class="resource-link" target="_blank">Visit CS50</a>
+                </div>
+            </div>
+
+            <div class="resource-category">
+                <h2 class="category-title"><i class="fas fa-file-alt"></i> Important Documents</h2>
+                <div class="resource-item">
+                    <h3 class="resource-title">RFC 9110: HTTP Semantics</h3>
+                    <p class="resource-author">IETF Standards</p>
+                    <p class="resource-description">The official specification of the HTTP protocol.</p>
+                    <a href="https://www.rfc-editor.org/rfc/rfc9110.html" class="resource-link" target="_blank">Read RFC</a>
+                </div>
+                <div class="resource-item">
+                    <h3 class="resource-title">ECMAScript Language Specification</h3>
+                    <p class="resource-author">ECMA International</p>
+                    <p class="resource-description">The official JavaScript language specification.</p>
+                    <a href="https://tc39.es/ecma262/" class="resource-link" target="_blank">View Spec</a>
+                </div>
+                <div class="resource-item">
+                    <h3 class="resource-title">Git Documentation</h3>
+                    <p class="resource-author">Git Project</p>
+                    <p class="resource-description">Official reference manual for Git version control.</p>
+                    <a href="https://git-scm.com/doc" class="resource-link" target="_blank">View Docs</a>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2023 My Programming Resources. Recommendations are based on personal experience.</p>
+            <p style="margin-top: 10px;"><a href="skills.html" style="color: #3498db; text-decoration: none;">← Back to Skills Page</a></p>
+        </footer>
+    </div>
+</body>
+</html>

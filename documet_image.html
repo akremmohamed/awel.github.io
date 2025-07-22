@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Viewer - Book Style</title>
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3f37c9;
+            --accent-color: #4895ef;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --page-color: #f9f6f0;
+            --page-shadow: #d1c7b7;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7ff;
+            color: var(--dark-color);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 2rem;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            color: var(--dark-color);
+            opacity: 0.8;
+        }
+        
+        .document-viewer {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+        }
+        
+        .book-container {
+            position: relative;
+            width: 90%;
+            max-width: 900px;
+            height: 600px;
+            perspective: 2000px;
+        }
+        
+        .book {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.5s ease;
+        }
+        
+        .page {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: var(--page-color);
+            border-radius: 5px 15px 15px 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            overflow: hidden;
+            backface-visibility: hidden;
+            transform-origin: left center;
+            transition: transform 0.5s ease;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--page-shadow);
+        }
+        
+        .page-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1rem;
+            background-color: white;
+            border-radius: 3px;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+        
+        .page-number {
+            position: absolute;
+            bottom: 1rem;
+            right: 2rem;
+            font-size: 0.9rem;
+            color: #888;
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .page-title {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+        
+        .page-subtitle {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .document-image {
+            max-width: 50%;
+            max-height: 300px;
+            display: block;
+            margin: 1rem auto;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            border: 1px solid #ddd;
+        }
+        
+        .document-text {
+            margin: 1rem 0;
+            line-height: 1.6;
+        }
+        
+        .navigation {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+            gap: 1rem;
+        }
+        
+        .nav-button {
+            padding: 0.75rem 1.5rem;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-button:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+        }
+        
+        .nav-button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .page-indicator {
+            display: flex;
+            align-items: center;
+            font-size: 1rem;
+            color: var(--dark-color);
+        }
+        
+        @media (max-width: 768px) {
+            .book-container {
+                height: 500px;
+            }
+            
+            .page {
+                padding: 1rem;
+            }
+            
+            .page-title {
+                font-size: 1.2rem;
+            }
+            
+            .document-image {
+                max-height: 200px;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="header">
+        <h1>Academic Document Viewer</h1>
+        <p class="subtitle">Browse through your documents like a book</p>
+    </div>
+    
+    <div class="document-viewer">
+        <div class="book-container">
+            <div class="book" id="book">
+                <!-- Page 1 -->
+                <div class="page" id="page1" style="z-index: 4; transform: rotateY(0deg);">
+                    <div class="page-content">
+                        <div class="page-header">
+                            <h2 class="page-title">Grade 8 Report Card</h2>
+                            <p class="page-subtitle">2007-2008 E.C</p>
+                        </div>
+                        
+                        <img src="image/8.png" alt="Grade 8 Report Card" class="document-image">
+                        
+                        <div class="document-text">
+                            <p>This document represents the official academic record for the Grade 8.</p>
+                            <p>The report card has been signed by the school principal and is considered an official document.</p>
+                        </div>
+                        
+                        <div class="page-number">Page 1 of 5</div>
+                    </div>
+                </div>
+                
+                <!-- Page 2 -->
+                <div class="page" id="page2" style="z-index: 3; transform: rotateY(0deg);">
+                    <div class="page-content">
+                        <div class="page-header">
+                            <h2 class="page-title">Grade 10 Transcript Details</h2>
+                            <p class="page-subtitle"> 2009-2010 E.C</p>
+                        </div>
+                        
+                        <img src="image/10.png" alt="Grade 10 Transcript" class="document-image">
+                        
+                        <div class="document-text">
+                            <p><strong>Student Name:</strong> Abol mohamed</p>
+                            <p><strong>Student ID:</strong> </p>
+                            <p><strong>Status:</strong>Pass</p>
+                        </div>
+                        
+                        <div class="page-number">Page 2 of 5</div>
+                    </div>
+                </div>
+                
+                <!-- Page 3 -->
+                <div class="page" id="page3" style="z-index: 2; transform: rotateY(0deg);">
+                    <div class="page-content">
+                        <div class="page-header">
+                            <h2 class="page-title">Grade 12 Report Card</h2>
+                            <p class="page-subtitle">2011-2012 E.C</p>
+                        </div>
+                        
+                        <img src="image/12.png" alt="Grade 12 Report Card" class="document-image">
+                        
+                        <div class="document-text">
+                            <p>This document represents the official academic record for the Grade 10.</p>
+                            <p>The report card has been signed by the school principal and is considered an official document.</p>
+                        </div>
+                        
+                        <div class="page-number">Page 3 of 5</div>
+                    </div>
+                </div>
+				
+				<!-- Page 4 -->
+                <div class="page" id="page3" style="z-index: 2; transform: rotateY(0deg);">
+                    <div class="page-content">
+                        <div class="page-header">
+                            <h2 class="page-title">Tempo</h2>
+                            <p class="page-subtitle">2012-2015 E.C</p>
+                        </div>
+                        
+                        <img src="image/tempo.png" alt="Tempo" class="document-image">
+                        
+                        <div class="document-text">
+                            <p>This document represents the official academic record for the University session.</p>
+                            <p>The report card has been signed by the school principal and is considered an official document.</p>
+                        </div>
+                        
+                        <div class="page-number">Page 4 of 5</div>
+                    </div>
+                </div>
+                
+                <!-- Page 5 -->
+                <div class="page" id="page4" style="z-index: 1; transform: rotateY(0deg);">
+                    <div class="page-content">
+                        <div class="page-header">
+                            <h2 class="page-title">CostSharing Details</h2>
+                            <p class="page-subtitle">2012-2015</p>
+                        </div>
+                        
+                        <img src="image/CostShare.png" alt="CostSharing" class="document-image">
+                        
+                        <div class="document-text">
+                            <p><strong>Student Name:</strong> Abol Mohamed</p>
+                            <p><strong>Student ID:</strong> Ugr/35752/12</p>
+                            <p><strong>GPA:</strong> 2.97</p>
+                        </div>
+                        
+                        <div class="page-number">Page 5 of 5</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="navigation">
+            <button class="nav-button" id="prevBtn" disabled>Previous</button>
+            <div class="page-indicator">
+                <span id="currentPage">1</span> / <span id="totalPages">4</span>
+            </div>
+            <button class="nav-button" id="nextBtn">Next</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const book = document.getElementById('book');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const currentPageSpan = document.getElementById('currentPage');
+            const totalPagesSpan = document.getElementById('totalPages');
+            
+            const pages = document.querySelectorAll('.page');
+            const totalPages = pages.length;
+            let currentPage = 1;
+            
+            totalPagesSpan.textContent = totalPages;
+            
+            function updateButtons() {
+                prevBtn.disabled = currentPage === 1;
+                nextBtn.disabled = currentPage === totalPages;
+                currentPageSpan.textContent = currentPage;
+                
+                // Update z-index for proper stacking
+                pages.forEach((page, index) => {
+                    const pageNumber = index + 1;
+                    if (pageNumber < currentPage) {
+                        page.style.zIndex = totalPages - currentPage + pageNumber;
+                    } else if (pageNumber > currentPage) {
+                        page.style.zIndex = totalPages - pageNumber + currentPage;
+                    } else {
+                        page.style.zIndex = totalPages;
+                    }
+                });
+            }
+            
+            function goToPage(pageNumber) {
+                if (pageNumber < 1 || pageNumber > totalPages) return;
+                
+                currentPage = pageNumber;
+                updateButtons();
+                
+                // Animate page turn
+                if (pageNumber > currentPage) {
+                    // Next page animation
+                } else if (pageNumber < currentPage) {
+                    // Previous page animation
+                }
+            }
+            
+            nextBtn.addEventListener('click', function() {
+                if (currentPage < totalPages) {
+                    goToPage(currentPage + 1);
+                }
+            });
+            
+            prevBtn.addEventListener('click', function() {
+                if (currentPage > 1) {
+                    goToPage(currentPage - 1);
+                }
+            });
+            
+            // Initialize
+            updateButtons();
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowRight' || e.key === ' ') {
+                    if (currentPage < totalPages) {
+                        goToPage(currentPage + 1);
+                        e.preventDefault();
+                    }
+                } else if (e.key === 'ArrowLeft') {
+                    if (currentPage > 1) {
+                        goToPage(currentPage - 1);
+                        e.preventDefault();
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

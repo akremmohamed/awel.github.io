@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Awel Mohamed - Portfolio</title>
+  <meta name="description" content="Professional portfolio of Awel Mohamed, Software Developer">
+  <link rel="stylesheet" href="css/newcss.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+  <!-- Header/Navigation -->
+  <header>
+    <div class="logo" data-en="Awel Mohamed" data-am="አወል መሀመድ">Awel Mohamed</div>
+    
+    <nav>
+      <div class="nav-links">
+        <a href="#skills" data-en="Skills" data-am="ክህሎቶች">Skills</a>
+        <a href="#projects" data-en="Projects" data-am="ስራዎች">Projects</a>
+        <a href="#document" data-en="Documents" data-am="ሰነዶች">Documents</a>
+        <a href="#experiences" data-en="Experiences" data-am="የስራ ልምዶች ">Experiences</a>
+        <a href="#contact" data-en="Contact Me" data-am="እኔን ለማግኘት">Contact Me</a>
+      </div>
+      
+      <div class="social-icons">
+        <!-- Facebook -->
+        <div class="social-media-container">
+          <a href="https://web.facebook.com/abol.mohamed.3" class="social-icon" style="background-color: #4267B2;">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+        </div>
+        
+        <!-- LinkedIn -->
+        <div class="social-media-container">
+          <a href="https://www.linkedin.com/in/akrem-mohamed-508017261/" class="social-icon" style="background-color: #0077B5;">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+        </div>
+        
+        <!-- GitHub -->
+        <div class="social-media-container">
+          <a href="https://x.com/abol1194214" class="social-icon" style="background-color: #333;">
+            <i class="fab fa-github"></i>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Language Switcher -->
+      <div class="language-switcher">
+        <button class="language-btn">
+          <img src="https://flagcdn.com/w20/gb.png" alt="English" class="language-flag">
+          <span>EN</span>
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="language-dropdown">
+          <div class="language-option" data-lang="en">
+            <img src="https://flagcdn.com/w20/gb.png" alt="English" class="language-flag">
+            <span>English</span>
+          </div>
+          <div class="language-option" data-lang="am">
+            <img src="https://flagcdn.com/w20/et.png" alt="Amharic" class="language-flag">
+            <span>አማርኛ</span>
+          </div>
+        </div>
+      </div>
+      
+      <button class="mobile-menu-btn">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <button id="themeToggle" class="theme-toggle">
+        <i class="fas fa-moon"></i>
+      </button>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <img src="image/Abol Mohammed.jpg" alt="Awel Mohamed" class="profile-img">
+        <h3 style="color: #0de455;"> Currently Open To AnyWork                     <a href="#contact" class="btn btn-primary" data-en="Contact Me" data-am="እኔን ለማግኘት">Contact Me</a></h3>
+        <h1 data-en="Hello, I'm Awel Mohamed" data-am="ሰላም፣ አወል መሀመድ እባላለሁ">Hello, I'm Awel Mohamed</h1>
+        <p data-en="I'm Software Developer | Additional working experience (Mobile Maintenance, Computer Maintenance, Network Installation ) | my dream: Creating digital solutions that make an impact."
+           data-am="ፉልስታክ ሶፍትዌር ደቨሎፐር ነኝ| ተጨማሪ ችሎታዎቼ (ሞባይል ጥገና ፤ ኮምፒተር ጥገና እና ኔትዎርክ ዝርጋታ) ተፅዕኖ የሚፈጥሩ ተገቢ ዲጂታል መፍትሄዎችን መፍጠር ህልሜ ነው።|">
+          I'm Software Developer | Additional working experience (Mobile Maintenance, Computer Maintenance, Network Installation ) | my dream: Creating digital solutions that make an impact.
+        </p>
+        <div class="btn-group">
+          <a href="docs/updatedCV.pdf" class="btn btn-outline" id="cvBtn" data-en="CV" data-am="ሲቪ">CV</a>
+        </div>
+      </div>
+    </section>
+    
+    <div id="cvModal" class="modal">
+    <div class="modal-content" style="max-width: 800px;">
+      <span class="close-modal">&times;</span>
+      <h2 data-en="My Curriculum Vitae" data-am="የስራ ቅጽል ዳታ">My Curriculum Vitae</h2>
+      
+      <!-- CV Viewer -->
+      <iframe src="docs/updatedCV.pdf" class="cv-viewer" style="width:750px;; height: 400px;"></iframe>
+      
+      <!-- Download Options -->
+      <div class="cv-download-options">
+        <button class="btn btn-outline" style="margin-top: 1rem;">
+        <a href="docs/updatedCV.pdf" download="docs/updatedCV.pdf" class="cv-format-btn cv-pdf">
+          <i class="fas fa-file-pdf"></i>
+          <span data-en="Download PDF" data-am="PDF አውርድ">Download PDF</span>
+        </a>
+        </button>
+      </div>
+      
+      <!-- Print Option -->
+      <button onclick="printCV()" class="btn btn-outline" style="margin-top: 1rem;">
+        <i class="fas fa-print"></i>
+        <span data-en="Print CV" data-am="ሲቪ አትም">Print CV</span>
+      </button>
+    </div>
+  </div>
+
+    <!-- Skills Section -->
+    <section id="skills" class="bg-gray-50 dark:bg-gray-800">
+      <div class="container">
+        <h2 data-en="My Skills" data-am="ክህሎቶቼ">My Skills</h2>
+        <div class="skills-grid">
+          <div class="skill-card">
+            <h3 data-en="Web Development" data-am="የድር መተግበሪያ">Web Development</h3>
+            <p data-en="HTML, CSS, JavaScript, php, Node.js, MySqlDB"
+               data-am="HTML, CSS, JavaScript, php, Node.js, MySqlDB">
+              HTML, CSS, JavaScript, php, Node.js, Android, MySqlDB
+            </p>
+          </div>
+          <div class="skill-card">
+            <h3 data-en="Mobile Development" data-am="የሞባይል መተግበሪያ">Mobile Development</h3>
+            <p data-en="Flutter, Android (Java/Kotlin)"
+               data-am="Flutter, Android (Java/Kotlin)">
+              Flutter, Android (Java/Kotlin)
+            </p>
+          </div>
+          <div class="skill-card">
+            <h3 data-en="Mobile,Printer & Computer Maintenance" data-am="ሞባይል፣ፕሪንተር እና ኮምፒውተር ጥገና">Mobile,Printer & Computer Maintenance</h3>
+            <p data-en="Keyboard Phone, Smart Phone, all Printer, all Computer(desktop and Laptop) Maintenance."
+               data-am="የቁጥር ስልኮችን, ተች ስልኮችን(ስማርት ስልኮች), ሁሉንም አይነት ፕሪንተሮች, ሁሉንም አይነት ኮምፒተሮች (ደስክቶፕ እና ላፕቶፕ) ጥገና።">
+              Keyboard Phone, Smart Phone, all Printer, all Computer(desktop and Laptop) Maintenance.
+            </p>
+          </div>
+          <div class="skill-card">
+            <h3 data-en="Languages" data-am="ቋንቋዎች">Languages</h3>
+            <p data-en="Amharic (Native).English (Excellect)"
+               data-am="አማርኛ (የአፍ መፍቻ), እንግሊዝኛ (እጅግ በጣም ጥሩ)">
+              Amharic (Native).<br>
+               English (Medium)
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Project Section -->
+    <section id="projects">
+      <div class="container">
+        <h2 data-en="My Projects" data-am="ስራዎቸ">My Projects</h2>
+        <div class="documents-container">
+          <div class="document-card">
+            <img src="image/1.jpg" alt="Project 1" class="document-img">
+            <div class="document-info">
+              <h3 data-en="Drugstore Managment System" data-am="መድሃኒት መደብር መቆጣጠሪያ በይነመረብ">Drugstore</h3>
+              <p data-en="Full-featured online store with payment integration"
+                 data-am="በክፍያ ውህደት የተሟላ የመስመር ላይ መደብር">
+                Full-featured online store with payment integration
+              </p>
+              <a href="#" class="btn btn-outline view-project-btn" style="margin-top: 1rem;" 
+                 data-project="drugstore" data-en="View Project" data-am="ፕሮጀክቱን ይመልከቱ">View Project</a>
+                 <a href="#" class="gallery-btn" data-gallery="drugstore-gallery" data-en="Gallery" data-am="ፎቶ">Gallery</a>
+            </div>
+          </div>
+          <div class="document-card">
+            <img src="image/10.PNG" alt="Project 2" class="document-img">
+            <div class="document-info">
+              <h3 data-en="Task Management App" data-am="የተግባር አስተዳደር መተግበሪያ">Task Management App</h3>
+              <p data-en="Productivity application for team collaboration"
+                 data-am="ለቡድን ትብብር የምርታማነት መተግበሪያ">
+                Productivity application for team collaboration
+              </p>
+              <a href="#" class="btn btn-outline view-project-btn" style="margin-top: 1rem;"
+                 data-project="task" data-en="View Project" data-am="ፕሮጀክቱን ይመልከቱ">View Project</a>
+                 <a href="#" class="gallery-btn" data-gallery="drugstore-gallery" data-en="Gallery" data-am="ፎቶ">Gallery</a>
+            </div>
+          </div>
+          <div class="document-card">
+            <img src="image/11.jpg" alt="Project 3" class="document-img">
+            <div class="document-info">
+              <h3 data-en="Portfolio Website" data-am="የፖርትፎሊዮ ድረ-ገጽ">Portfolio Website</h3>
+              <p data-en="Responsive personal portfolio website"
+                 data-am="ምላሽ የሚሰጥ የግል ፖርትፎሊዮ ድረ-ገጽ">
+                Responsive personal portfolio website
+              </p>
+              <a href="#" class="btn btn-outline view-project-btn" style="margin-top: 1rem;"
+                 data-project="portfolio" data-en="View Project" data-am="ፕሮጀክቱን ይመልከቱ">View Project</a>
+                 <a href="#" class="gallery-btn" data-gallery="drugstore-gallery" data-en="Gallery" data-am="ፎቶ">Gallery</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+
+    <div id="galleryModal" class="gallery-modal">
+    <div class="gallery-content">
+      <span class="gallery-close">&times;</span>
+      
+      <div class="gallery-slide active">
+        <img src="image/5.jpg" class="gallery-image">
+        <div class="gallery-caption">Drugstore Management System - Dashboard</div>
+      </div>
+      
+      <div class="gallery-slide">
+        <img src="image/6.jpg" class="gallery-image">
+        <div class="gallery-caption">Drugstore Management System - Inventory</div>
+      </div>
+      
+      <div class="gallery-slide">
+        <img src="image/5.jpg" class="gallery-image">
+        <div class="gallery-caption">Drugstore Management System - Checkout</div>
+      </div>
+      
+      <div class="gallery-nav">
+        <a class="gallery-prev">&#10094;</a>
+        <a class="gallery-next">&#10095;</a>
+      </div>
+      
+      <div class="gallery-thumbnails">
+        <img src="image/2.jpg" class="thumbnail active" onclick="currentSlide(1)">
+        <img src="image/3.jpg" class="thumbnail" onclick="currentSlide(2)">
+        <img src="image/4.jpg" class="thumbnail" onclick="currentSlide(3)">
+      </div>
+    </div>
+  </div>
+
+    <!-- Document Viewer Section -->
+    <section id="document">
+      <div class="container">
+        <h2 data-en="Academic Document Viewer" data-am="የትምህርት ማስረጃዎቸ">Academic Document</h2>
+      </div>
+      
+      <div class="document-viewer">
+        <div class="book-container">
+          <div class="book" id="book">
+            <!-- Page 1 -->
+            <div class="page" id="page1" style="z-index: 4; transform: rotateY(0deg);">
+              <div class="page-content">
+                <div class="page-header">
+                  <h2 class="page-title">Grade 8 Report Card</h2>
+                  <p class="page-subtitle">2007-2008 E.C</p>
+                </div>
+                
+                <img src="image/8.png" alt="Grade 8 Report Card" class="document-image">
+                
+                <div class="document-text">
+                  <p>This document represents the official academic record for the Grade 8.</p>
+                  <p>The report card has been signed by the school principal and is considered an official document.</p>
+                </div>
+                
+                <div class="page-number">Page 1 of 3</div>
+              </div>
+            </div>
+            
+            <!-- Page 2 -->
+            <div class="page" id="page4" style="z-index: 2; transform: rotateY(0deg);">
+              <div class="page-content">
+                <div class="page-header">
+                  <h2 class="page-title">Tempo</h2>
+                  <p class="page-subtitle">2012-2015 E.C</p>
+                </div>
+                
+                <img src="image/tempo.png" alt="Tempo" class="document-image">
+                
+                <div class="document-text">
+                  <p>This document represents the official academic record for the University session.</p>
+                  <p>The report card has been signed by the University principal and is considered an official document.</p>
+                </div>
+                
+                <div class="page-number">Page 2 of 3</div>
+              </div>
+            </div>
+            
+            <!-- Page 3 -->
+            <div class="page" id="page5" style="z-index: 1; transform: rotateY(0deg);">
+              <div class="page-content">
+                <div class="page-header">
+                  <h2 class="page-title">CostSharing Details</h2>
+                  <p class="page-subtitle">2012-2015</p>
+                </div>
+                
+                <img src="image/CostShare.png" alt="CostSharing" class="document-image">
+                
+                <div class="document-text">
+                  <p><strong>Student Name:</strong> Abol Mohamed</p>
+                  <p><strong>Student ID:</strong> Ugr/35752/12</p>
+                </div>
+                
+                <div class="page-number">Page 3 of 3</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="navigation">
+          <button class="nav-button" id="prevBtn" disabled>Previous</button>
+          <div class="page-indicator">
+            <span id="currentPage">1</span> / <span id="totalPages">3</span>
+          </div>
+          <button class="nav-button" id="nextBtn">Next</button>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="bg-gray-50 dark:bg-gray-800">
+      <div class="container">
+        <h2 data-en="Contact Me" data-am="አግኙኝ">Contact Me</h2>
+        <div class="contact-container">
+          <form class="contact-form">
+            <div class="form-group">
+              <label for="name" data-en="Name" data-am="ስም">Name</label>
+              <input type="text" id="name" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="email" data-en="Email" data-am="ኢሜይል">Email</label>
+              <input type="email" id="email" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="message" data-en="Message" data-am="መልእክት">Message</label>
+              <textarea id="message" class="form-control" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" data-en="Send Message" data-am="መልእክት ላክ">Send Message</button>
+          </form>
+          
+          <div class="contact-info">
+            <h3 data-en="Contact Information" data-am="የግንኙነት መረጃ">Contact Information</h3>
+            
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-phone"></i>
+              </div>
+              <div class="contact-text">
+                <h4 data-en="Phone" data-am="ስልክ">Phone</h4>
+                <a href="tel:+251917578903">+251 9-17-57-89-03</a><br>
+                <a href="tel:+251963635404">+251 9-63-63-54-04</a>
+              </div>
+            </div>
+            
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="contact-text">
+                <h4 data-en="Email" data-am="ኢሜይል">Email</h4>
+                <a href="mailto:akremmohamed1993@gmail.com">Akremmohamed1993@gmail.com</a>
+              </div>
+            </div>
+            
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="contact-text">
+                <h4 data-en="Location" data-am="አድራሻ">Location</h4>
+                <p data-en="Addis Ababa, Ethiopia" data-am="አዲስ አበባ, ኢትዮጵያ">Addis Ababa, Ethiopia</p>
+              </div>
+            </div>
+            
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div class="contact-text">
+                <h4 data-en="Current Status" data-am="አሁናዊ ሁኔታ">Current Status</h4>
+                <p data-en="Open To Any Work" data-am="ለማንኛውም ስራ ክፍት ነኝ">Open To AnyWork</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-social">
+        <a href="https://web.facebook.com/abol.mohamed.3"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://x.com/abol1194214"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.linkedin.com/in/akrem-mohamed-508017261/"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://github.com/akremmohamed"><i class="fab fa-github"></i></a>
+      </div>
+      <p class="copyright" data-en="2025 Developed by: Awel Mohamed." 
+         data-am="2025 አወል መሀመድ።">
+        &copy; <span id="current-year"></span> Developed by: Awel Mohamed.</p>
+    </div>
+  </footer>
+
+  <!-- Modals -->
+  <!-- CV Modal -->
+  <div id="cvModal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <h2 data-en="CV Options" data-am="ሲቪ አማራጮች">CV Options</h2>
+      <p data-en="Choose how you'd like to view my CV:" data-am="ሲቪዬን እንዴት እንደሚመለከቱ ይምረጡ።">
+        Choose how you'd like to view my CV:
+      </p>
+      <div class="cv-options">
+        <a href="path/to/your-cv.pdf" class="cv-option-btn cv-download" download data-en="Download CV" data-am="ሲቪ አውርድ">
+          Download CV
+        </a>
+        <a href="path/to/your-cv.pdf" target="_blank" class="cv-option-btn cv-view" data-en="View CV" data-am="ሲቪ ይመልከቱ">
+          View CV
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Project Demo Modal -->
+  <div id="projectModal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <h2 id="projectModalTitle">Project Demo</h2>
+      <iframe id="projectDemoFrame" class="project-iframe" src="" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+        ? '<i class="fas fa-times"></i>' 
+        : '<i class="fas fa-bars"></i>';
+    });
+    
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+      });
+    });
+    
+    // Theme Toggle
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = themeToggle.querySelector('i');
+    
+    // Check for saved theme preference or use preferred color scheme
+    const savedTheme = localStorage.getItem('theme') || 
+                      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    
+    // Apply the saved theme
+    if (savedTheme === 'dark') {
+      document.body.classList.add('dark-mode');
+      themeIcon.classList.replace('fa-moon', 'fa-sun');
+    }
+    
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      const isDark = document.body.classList.contains('dark-mode');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      
+      if (isDark) {
+        themeIcon.classList.replace('fa-moon', 'fa-sun');
+      } else {
+        themeIcon.classList.replace('fa-sun', 'fa-moon');
+      }
+    });
+    
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+    
+    // Set current year in footer
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+    
+    // Form submission
+    const contactForm = document.querySelector('.contact-form');
+    if (contactForm) {
+      contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        // Here you would typically send the form data to a server
+        alert('Thank you for your message! I will get back to you soon.');
+        this.reset();
+      });
+    }
+    
+    // Language Switcher Functionality
+    const languageBtn = document.querySelector('.language-btn');
+    const languageDropdown = document.querySelector('.language-dropdown');
+    const languageOptions = document.querySelectorAll('.language-option');
+    
+    // Toggle language dropdown
+    languageBtn.addEventListener('click', () => {
+      languageDropdown.classList.toggle('show');
+    });
+    
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.language-switcher')) {
+        languageDropdown.classList.remove('show');
+      }
+    });
+    
+    // Change language
+    languageOptions.forEach(option => {
+      option.addEventListener('click', () => {
+        const selectedLang = option.getAttribute('data-lang');
+        changeLanguage(selectedLang);
+        languageDropdown.classList.remove('show');
+        
+        // Update button text
+        const flag = option.querySelector('.language-flag').src;
+        const text = option.querySelector('span').textContent;
+        languageBtn.innerHTML = `
+          <img src="${flag}" alt="${selectedLang}" class="language-flag">
+          <span>${selectedLang.toUpperCase()}</span>
+          <i class="fas fa-chevron-down"></i>
+        `;
+      });
+    });
+    
+    // Language change function
+    function changeLanguage(lang) {
+      // Save preference to localStorage
+      localStorage.setItem('language', lang);
+      
+      // Update all elements with data attributes
+      document.querySelectorAll('[data-en], [data-am]').forEach(element => {
+        if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+          // Handle input placeholders
+          const placeholderEn = element.getAttribute('data-en');
+          const placeholderAm = element.getAttribute('data-am');
+          if (placeholderEn && placeholderAm) {
+            element.placeholder = lang === 'en' ? placeholderEn : placeholderAm;
+          }
+        } else {
+          // Handle regular content
+          const textEn = element.getAttribute('data-en');
+          const textAm = element.getAttribute('data-am');
+          if (textEn && textAm) {
+            element.textContent = lang === 'en' ? textEn : textAm;
+          }
+        }
+      });
+      
+      // Update HTML lang attribute
+      document.documentElement.lang = lang;
+    }
+    
+    // Check for saved language preference
+    const savedLanguage = localStorage.getItem('language') || 'en';
+    changeLanguage(savedLanguage);
+    
+    // Update language button to match saved preference
+    if (savedLanguage === 'am') {
+      languageBtn.innerHTML = `
+        <img src="https://flagcdn.com/w20/et.png" alt="Amharic" class="language-flag">
+        <span>AM</span>
+        <i class="fas fa-chevron-down"></i>
+      `;
+    }
+    
+    // Document Viewer Functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const book = document.getElementById('book');
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      const currentPageSpan = document.getElementById('currentPage');
+      const totalPagesSpan = document.getElementById('totalPages');
+      
+      const pages = document.querySelectorAll('.page');
+      const totalPages = pages.length;
+      let currentPage = 1;
+      
+      totalPagesSpan.textContent = totalPages;
+      
+      function updateButtons() {
+        prevBtn.disabled = currentPage === 1;
+        nextBtn.disabled = currentPage === totalPages;
+        currentPageSpan.textContent = currentPage;
+        
+        // Update z-index for proper stacking
+        pages.forEach((page, index) => {
+          const pageNumber = index + 1;
+          if (pageNumber < currentPage) {
+            page.style.zIndex = totalPages - currentPage + pageNumber;
+          } else if (pageNumber > currentPage) {
+            page.style.zIndex = totalPages - pageNumber + currentPage;
+          } else {
+            page.style.zIndex = totalPages;
+          }
+        });
+      }
+      
+      function goToPage(pageNumber) {
+        if (pageNumber < 1 || pageNumber > totalPages) return;
+        
+        currentPage = pageNumber;
+        updateButtons();
+      }
+      
+      nextBtn.addEventListener('click', function() {
+        if (currentPage < totalPages) {
+          goToPage(currentPage + 1);
+        }
+      });
+      
+      prevBtn.addEventListener('click', function() {
+        if (currentPage > 1) {
+          goToPage(currentPage - 1);
+        }
+      });
+      
+      // Initialize
+      updateButtons();
+      
+      // Keyboard navigation
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowRight' || e.key === ' ') {
+          if (currentPage < totalPages) {
+            goToPage(currentPage + 1);
+            e.preventDefault();
+          }
+        } else if (e.key === 'ArrowLeft') {
+          if (currentPage > 1) {
+            goToPage(currentPage - 1);
+            e.preventDefault();
+          }
+        }
+      });
+    });
+
+    // CV Modal functionality
+    const cvBtn = document.getElementById('cvBtn');
+    const cvModal = document.getElementById('cvModal');
+    const projectModal = document.getElementById('projectModal');
+    const closeModals = document.querySelectorAll('.close-modal');
+    
+    // Open CV modal
+    cvBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      cvModal.style.display = 'block';
+    });
+    
+    // Project demo modals
+    document.querySelectorAll('.view-project-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const project = btn.getAttribute('data-project');
+        const projectTitle = btn.parentElement.querySelector('h3').textContent;
+        
+        document.getElementById('projectModalTitle').textContent = projectTitle + ' Demo';
+        
+        // Set iframe source based on project
+        let demoUrl = '';
+        switch(project) {
+          case 'drugstore':
+            demoUrl = 'video/video.mp4';
+            break;
+          case 'task':
+            demoUrl = 'video/video.mp4';
+            break;
+          case 'portfolio':
+            demoUrl = 'video/video.mp4';
+            break;
+          default:
+            demoUrl = 'video/video.mp4';
+        }
+        
+        document.getElementById('projectDemoFrame').src = demoUrl;
+        projectModal.style.display = 'block';
+      });
+    });
+    
+    // Close modals
+    closeModals.forEach(closeBtn => {
+      closeBtn.addEventListener('click', () => {
+        cvModal.style.display = 'none';
+        projectModal.style.display = 'none';
+        // Clear iframe src when closing to stop any ongoing processes
+        document.getElementById('projectDemoFrame').src = '';
+      });
+    });
+    
+    // Close modal when clicking outside
+    window.addEventListener('click', (e) => {
+      if (e.target === cvModal) {
+        cvModal.style.display = 'none';
+      }
+      if (e.target === projectModal) {
+        projectModal.style.display = 'none';
+        document.getElementById('projectDemoFrame').src = '';
+      }
+    });
+
+
+    // Gallery Functionality
+    let slideIndex = 1;
+    let currentGallery = null;
+
+    // Open gallery modal
+    document.querySelectorAll('.gallery-btn').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        const galleryId = this.getAttribute('data-gallery');
+        currentGallery = galleryId;
+        document.getElementById('galleryModal').style.display = 'block';
+        showSlides(slideIndex);
+      });
+    });
+
+    // Close gallery modal
+    document.querySelector('.gallery-close').addEventListener('click', () => {
+      document.getElementById('galleryModal').style.display = 'none';
+    });
+
+    // Next/previous controls
+    document.querySelector('.gallery-next').addEventListener('click', () => {
+      plusSlides(1);
+    });
+
+    document.querySelector('.gallery-prev').addEventListener('click', () => {
+      plusSlides(-1);
+    });
+
+    // Thumbnail controls
+    function currentSlide(n) {
+      showSlides(slideIndex = n);
+    }
+
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+
+    function showSlides(n) {
+      let i;
+      const slides = document.querySelectorAll('.gallery-slide');
+      const thumbnails = document.querySelectorAll('.thumbnail');
+      
+      if (n > slides.length) {slideIndex = 1}
+      if (n < 1) {slideIndex = slides.length}
+      
+      for (i = 0; i < slides.length; i++) {
+        slides[i].classList.remove('active');
+      }
+      
+      for (i = 0; i < thumbnails.length; i++) {
+        thumbnails[i].classList.remove('active');
+      }
+      
+      slides[slideIndex-1].classList.add('active');
+      thumbnails[slideIndex-1].classList.add('active');
+    }
+
+    // Close when clicking outside
+    window.addEventListener('click', (e) => {
+      if (e.target === document.getElementById('galleryModal')) {
+        document.getElementById('galleryModal').style.display = 'none';
+      }
+    });
+
+  </script>
+</body>
+</html>

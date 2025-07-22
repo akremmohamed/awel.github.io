@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Records Portfolio</title>
+    <style>
+        :root {
+            --primary-blue: #2563eb;
+            --dark-blue: #1e40af;
+            --light-blue: #93c5fd;
+            --accent-gold: #f59e0b;
+            --light-gray: #f3f4f6;
+            --dark-gray: #4b5563;
+            --success-green: #10b981;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+        }
+        
+        body {
+            background-color: #f8fafc;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .watermark {
+            position: absolute;
+            opacity: 0.1;
+            font-size: 15rem;
+            font-weight: 900;
+            color: var(--primary-blue);
+            z-index: -1;
+            top: -5rem;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            color: var(--dark-blue);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--dark-gray);
+            margin-bottom: 1.5rem;
+        }
+        
+        .divider {
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--accent-gold));
+            width: 100px;
+            margin: 0 auto 2rem;
+            border-radius: 2px;
+        }
+        
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .grade-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 5px solid var(--primary-blue);
+            position: relative;
+        }
+        
+        .grade-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+        }
+        
+        .card-header {
+            background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+            color: white;
+            padding: 1.5rem;
+            position: relative;
+        }
+        
+        .grade-badge {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background-color: var(--accent-gold);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .card-subtitle {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .card-body {
+            padding: 1.5rem;
+        }
+        
+        .student-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .info-item {
+            margin-bottom: 0.5rem;
+        }
+        
+        .info-label {
+            font-size: 0.8rem;
+            color: var(--dark-gray);
+            font-weight: 500;
+            display: block;
+            margin-bottom: 0.2rem;
+        }
+        
+        .info-value {
+            font-weight: 600;
+        }
+        
+        .grades-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        
+        .grades-table th {
+            background-color: var(--light-gray);
+            padding: 0.75rem;
+            text-align: left;
+            font-size: 0.8rem;
+            color: var(--dark-gray);
+            font-weight: 600;
+        }
+        
+        .grades-table td {
+            padding: 0.75rem;
+            border-bottom: 1px solid #e5e7eb;
+            font-size: 0.9rem;
+        }
+        
+        .grades-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .grade-A {
+            color: var(--success-green);
+            font-weight: 700;
+        }
+        
+        .grade-B {
+            color: #3b82f6;
+            font-weight: 700;
+        }
+        
+        .card-footer {
+            padding: 1rem 1.5rem;
+            background-color: var(--light-gray);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .gpa-display {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--dark-blue);
+        }
+        
+        .gpa-label {
+            font-size: 0.8rem;
+            color: var(--dark-gray);
+        }
+        
+        .signature-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .signature-line {
+            width: 120px;
+            height: 1px;
+            background-color: var(--dark-gray);
+            margin: 0.5rem 0;
+        }
+        
+        .signature-label {
+            font-size: 0.7rem;
+            color: var(--dark-gray);
+        }
+        
+        .seal {
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+            width: 50px;
+            opacity: 0.7;
+        }
+        
+        @media print {
+            body {
+                background-color: white;
+            }
+            
+            .container {
+                padding: 0;
+            }
+            
+            .grade-card {
+                box-shadow: none;
+                border: 1px solid #e5e7eb;
+                page-break-inside: avoid;
+                margin-bottom: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .cards-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .student-info {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="watermark">ACADEMIC</div>
+            <h1>Academic Records Portfolio</h1>
+            <p class="subtitle">Official grade documentation and transcripts</p>
+            <div class="divider"></div>
+        </header>
+        
+        <div class="cards-container">
+            <!-- Grade 8 Card -->
+            <div class="grade-card">
+                <div class="grade-badge">8</div>
+                <div class="card-header">
+                    <h2 class="card-title">Middle School Transcript</h2>
+                    <p class="card-subtitle">Academic Year 2022-2023</p>
+                </div>
+                <div class="card-body">
+                    <div class="student-info">
+                        <div class="info-item">
+                            <span class="info-label">Student Name</span>
+                            <span class="info-value">Alexandra M. Johnson</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Student ID</span>
+                            <span class="info-value">MS-8452-2022</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Date of Birth</span>
+                            <span class="info-value">May 12, 2009</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">School</span>
+                            <span class="info-value">Maplewood Middle School</span>
+                        </div>
+                    </div>
+                    
+                    <table class="grades-table">
+                        <thead>
+                            <tr>
+                                <th>Subject</th>
+                                <th>Teacher</th>
+                                <th>Grade</th>
+                                <th>Credits</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>English Language Arts</td>
+                                <td>Ms. Peterson</td>
+                                <td class="grade-A">A</td>
+                                <td>1.0</td>
+                            </tr>
+                            <tr>
+                                <td>Mathematics</td>
+                                <td>Mr. Chen</td>
+                                <td class="grade-A">A</td>
+                                <td>1.0</td>
+                            </tr>
+                            <tr>
+                                <td>Science</td>
+                                <td>Dr. Williams</td>
+                                <td class="grade-A">A-</td>
+                                <td>1.0</td>
+                            </tr>
+                            <tr>
+                                <td>Social Studies</td>
+                                <td>Mr. Rodriguez</td>
+                                <td class="grade-B">B+</td>
+                                <td>1.0</td>
+                            </tr>
+                            <tr>
+                                <td>Physical Education</td>
+                                <td>Coach Davis</td>
+                                <td class="grade-A">A</td>
+                                <td>0.5</td>
+                            </tr>
+                            <tr>
+                                <td>Art & Design</td>
+                                <td>Ms. Garcia</td>
+                                <td class="grade-A">A</td>
+                                <td>0.5</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-footer">
+                    <div>
+                        <div class="gpa-label">Cumulative GPA</div>
+                        <div class="gpa-display">3.85 / 4.0</div>
+                    </div>
+                    <div class="signature-box">
+                        <div class="signature-line"></div>
+                        <div class="signature-label">School Official</div>
+                    </div>
+                </div>
+                <img src="https://cdn-icons-png.flaticon.com/512/281/281764.png" alt="School Seal" class="seal">
+            </div>
+            
+            <!-- Grade 10 Card -->
+            <div class="grade-card">
+                <div class="grade-badge">10</div>
+                <div class="card-header">
+                    <h2 class="card-title">High School Transcript</h2>
+                    <p class="card-subtitle">Academic Year 2024-2025</p>
+                </div>
+                <div class="card-body">
+                    <div class="student-info">
+                        <div class="info-item">
+                            <span class="info-label">Student Name</span>
+                            <span class="info-value">Alexandra M. Johnson</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Student ID</span>
+                            <span class="info-value">HS-7201-2024</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Date of Birth</span>
+                            <span class="info-value">May 12, 2009</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">School</span>
+                            <span class="info-value">Springfield High School</span>
+                        </div>
+                    </div>
+                    
+                    <table class="grades-table">
+                        <thead>
+                            <tr>
+                                <th>Subject</th>
+                                <th>Teacher</th>
+                                <th>Grade</th>
+                                <th>Credits</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>English 10 Honors</td>
+                                <td>Dr. Bennett</td>
+                                <td class="grade-A">A-</td>
+                                <td>1.0</td>
+                            </tr>
+                            <tr>
+                                <td>Algebra II</td>
+                                <td>Mr. Chen</td>
+                                <td class="grade-B">B+</td>
+                                <td>1.0</td>
+                            </tr>
+                            <tr>
+                                <td>Chemistry</td>
+                                <td>Dr. Williams</td>
+                                <td class="grade-A">A</td>
+                                <td>1.0</td>
+                            </tr>
+                            <tr>
+                                <td>World History</td>
+                                <td>Ms. Tanaka</td>
+                                <td class="grade-A">A</td>
+                                <td>1.0</td>
+                            </tr>
+                            <tr>
+                                <td>Spanish II</td>
+                                <td>Señora Lopez</td>
+                                <td class="grade-A">A-</td>
+                                <td>1.0</td>
+                            </tr>
+                            <tr>
+                                <td>Computer Science</td>
+                                <td>Mr. Park</td>
+                                <td class="grade-A">A</td>
+                                <td>1.0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-footer">
+                    <div>
+                        <div class="gpa-label">Cumulative GPA</div>
+                        <div class="gpa-display">3.78 / 4.0</div>
+                    </div>
+                    <div class="signature-box">
+                        <div class="signature-line"></div>
+                        <div class="signature-label">School Official</div>
+                    </div>
+                </div>
+                <img src="https://cdn-icons-png.flaticon.com/512/281/281764.png" alt="School Seal" class="seal">
+            </div>
+        </div>
+        
+        <!-- Additional grade cards can be added here -->
+        <div class="cards-container">
+            <!-- Grade 9 Card -->
+            <div class="grade-card">
+                <div class="grade-badge">9</div>
+                <div class="card-header">
+                    <h2 class="card-title">High School Transcript</h2>
+                    <p class="card-subtitle">Academic Year 2023-2024</p>
+                </div>
+                <div class="card-body">
+                    <div class="student-info">
+                        <div class="info-item">
+                            <span class="info-label">Student Name</span>
+                            <span class="info-value">Alexandra M. Johnson</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Student ID</span>
+                            <span class="info-value">HS-7201-2023</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Date of Birth</span>
+                            <span class="info-value">May 12, 2009</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">School</span>
+                            <span class="info-value">Springfield High School</span>
+                        </div>
+                    </div>
+                    
+                    <table class="grades-table">
+                        <thead>
+                            <tr>
+                                <th>Subject</th>
+                                <th>Teacher</th>
+                                <th>Grade</th>
+                                <th>Credits</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>English 9 Honors</td>
+                                <td>Ms. Peterson</td>
+                                <td class="grade-A">A</td>
+                                <td>1.0</td>
+                            </tr>
+                            <tr>
+                                <td>Geometry</td>
+                                <td>Mrs. Adams</td>
+                                <td class="grade-A">A-</td>
+                                <td>1.0</td>
+                            </tr>
+                            <tr>
+                                <td>Biology</td>
+                                <td>Dr. Williams</td>
+                                <td class="grade-A">A</td>
+                                <td>1.0</td>
+                            </tr>
+                            <tr>
+                                <td>US History</td>
+                                <td>Mr. Rodriguez</td>
+                                <td class="grade-B">B+</td>
+                                <td>1.0</td>
+                            </tr>
+                            <tr>
+                                <td>Spanish I</td>
+                                <td>Señora Lopez</td>
+                                <td class="grade-A">A</td>
+                                <td>1.0</td>
+                            </tr>
+                            <tr>
+                                <td>Health Education</td>
+                                <td>Coach Davis</td>
+                                <td class="grade-A">A</td>
+                                <td>0.5</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-footer">
+                    <div>
+                        <div class="gpa-label">Cumulative GPA</div>
+                        <div class="gpa-display">3.92 / 4.0</div>
+                    </div>
+                    <div class="signature-box">
+                        <div class="signature-line"></div>
+                        <div class="signature-label">School Official</div>
+                    </div>
+                </div>
+                <img src="https://cdn-icons-png.flaticon.com/512/281/281764.png" alt="School Seal" class="seal">
+            </div>
+            
+            <!-- Grade 7 Card -->
+            <div class="grade-card">
+                <div class="grade-badge">7</div>
+                <div class="card-header">
+                    <h2 class="card-title">Middle School Transcript</h2>
+                    <p class="card-subtitle">Academic Year 2021-2022</p>
+                </div>
+                <div class="card-body">
+                    <div class="student-info">
+                        <div class="info-item">
+                            <span class="info-label">Student Name</span>
+                            <span class="info-value">Alexandra M. Johnson</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Student ID</span>
+                            <span class="info-value">MS-8452-2021</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Date of Birth</span>
+                            <span class="info-value">May 12, 2009</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">School</span>
+                            <span class="info-value">Maplewood Middle School</span>
+                        </div>
+                    </div>
+                    
+                    <table class="grades-table">
+                        <thead>
+                            <tr>
+                                <th>Subject</th>
+                                <th>Teacher</th>
+                                <th>Grade</th>
+                                <th>Credits</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>English Language Arts</td>
+                                <td>Ms. Peterson</td>
+                                <td class="grade-A">A-</td>
+                                <td>1.0</td>
+                            </tr>
+                            <tr>
+                                <td>Mathematics</td>
+                                <td>Mr. Chen</td>
+                                <td class="grade-A">A</td>
+                                <td>1.0</td>
+                            </tr>
+                            <tr>
+                                <td>Life Science</td>
+                                <td>Dr. Williams</td>
+                                <td class="grade-A">A</td>
+                                <td>1.0</td>
+                            </tr>
+                            <tr>
+                                <td>World Geography</td>
+                                <td>Mr. Rodriguez</td>
+                                <td class="grade-B">B+</td>
+                                <td>1.0</td>
+                            </tr>
+                            <tr>
+                                <td>Physical Education</td>
+                                <td>Coach Davis</td>
+                                <td class="grade-A">A</td>
+                                <td>0.5</td>
+                            </tr>
+                            <tr>
+                                <td>Music Appreciation</td>
+                                <td>Mr. Johnson</td>
+                                <td class="grade-A">A</td>
+                                <td>0.5</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-footer">
+                    <div>
+                        <div class="gpa-label">Cumulative GPA</div>
+                        <div class="gpa-display">3.79 / 4.0</div>
+                    </div>
+                    <div class="signature-box">
+                        <div class="signature-line"></div>
+                        <div class="signature-label">School Official</div>
+                    </div>
+                </div>
+                <img src="https://cdn-icons-png.flaticon.com/512/281/281764.png" alt="School Seal" class="seal">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
